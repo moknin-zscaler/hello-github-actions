@@ -19,9 +19,13 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: '3.x'
-      - uses: jannekem/run-python-script-action@v1
-        with:
-          script: |
-            new_ecr="zpc-"+${{ inputs.ecr }} if (${{ inputs.ecr }}.rsplit("-")[0] != "cwp" and ${{ inputs.ecr }}.rsplit("-")[0] != "zpc") else ${{ inputs.ecr }} 
-            print (new_ecr)
+      - name: Get chart name
+        shell: bash
+        run: |
+          if [[ ${{ inputs.ecr }} == *"cwp"* ]];
+          then
+              echo "String contains substring."
+          else
+              echo "String does not contain substring."
+          fi
 
