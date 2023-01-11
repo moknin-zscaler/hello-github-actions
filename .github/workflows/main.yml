@@ -23,5 +23,6 @@ jobs:
       - uses: jannekem/run-python-script-action@v1
         with:
           script: |
-            print(${{ env.TEST_CHART_NAME}})
+            get_input(${{ env.TEST_CHART_NAME}})
+            print("test-chart-name" + ${{ env.TEST_CHART_NAME}} )
 
