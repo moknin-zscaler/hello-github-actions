@@ -23,5 +23,5 @@ jobs:
         with:
           script: |
             get_input(${{ inputs.ecr }})
-            print("test-chart-name" + ${{ env.ecr}} )
+            print("test-chart-name" + ${{ inputs.ecr }})
 
