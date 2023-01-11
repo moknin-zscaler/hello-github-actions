@@ -22,10 +22,15 @@ jobs:
       - name: Get chart name
         shell: bash
         run: |
-          if [[ ${{ inputs.ecr }} == *"cwp"* ]];
+          if [[ ${{ inputs.ecr }} == *"cwp"* ]] || [[ ${{ inputs.ecr }} == *"zpc"* ]];
           then
               echo "String contains substring."
+              echo "ECR_NAME=${{ inputs.ecr }}" >> $GITHUB_ENV
           else
               echo "String does not contain substring."
+              echo "ECR_NAME="zpc-"+${{ inputs.ecr }}" >> $GITHUB_ENV
           fi
+      - name: print var
+        shell: bash
+        run: echo ${{ env.ECR_NAME }}
 
