@@ -22,5 +22,5 @@ jobs:
       - uses: jannekem/run-python-script-action@v1
         with:
           script: |
-            new_ecr="zpc-"+ecr if (test-chart-name.rsplit("-")[0] != "cwp" and test-chart-name.rsplit("-")[0] != "zpc") else test-chart-name  
+            new_ecr="zpc-"+ecr if (${{ test-chart-name }}.rsplit("-")[0] != "cwp" and ${{ test-chart-name }}.rsplit("-")[0] != "zpc") else ${{ test-chart-name }}  
 
