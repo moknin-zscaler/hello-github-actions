@@ -1,9 +1,6 @@
 name: Run Script
 
 on:
-  push:
-    branches:
-      - 'main'
   workflow_dispatch:
     inputs:
       ecr:
@@ -28,7 +25,7 @@ jobs:
               echo "ECR_NAME=${{ inputs.ecr }}" >> $GITHUB_ENV
           else
               echo "String does not contain substring."
-              echo "ECR_NAME="zpc-"+${{ inputs.ecr }}" >> $GITHUB_ENV
+              echo "ECR_NAME="zpc-"${{ inputs.ecr }}" >> $GITHUB_ENV
           fi
       - name: print var
         shell: bash
