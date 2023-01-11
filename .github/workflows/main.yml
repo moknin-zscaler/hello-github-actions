@@ -22,5 +22,5 @@ jobs:
       - uses: jannekem/run-python-script-action@v1
         with:
           script: |
-            print("test-chart-name" + "${{ inputs.ecr }}" )
+            print("test-chart-name" + "get_input(${{ inputs.ecr }})" )
 
