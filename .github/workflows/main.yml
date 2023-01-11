@@ -5,24 +5,23 @@ on:
     branches:
       - 'main'
   workflow_dispatch:
+    inputs:
+      ecr:
+        type: string
+        required: true
+        default: "test-chart-name-long"
+
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    
-      - name: Search for charts
-        id: search-charts
-        run: |
-          echo "test-chart-name=test-chart-name-long" >> $GITHUB_OUTPUT
-        shell: bash
-      
       - uses: actions/setup-python@v4
         with:
           python-version: '3.x'
       - uses: jannekem/run-python-script-action@v1
         with:
           script: |
-            get_input(${{ env.TEST_CHART_NAME}})
-            print("test-chart-name" + ${{ env.TEST_CHART_NAME}} )
+            get_input(${{ inputs.ecr }})
+            print("test-chart-name" + ${{ env.ecr}} )
 
