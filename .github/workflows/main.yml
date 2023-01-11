@@ -7,6 +7,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    
+      - name: Search for charts
+        id: search-charts
+        run: |
+          echo "test-chart-name=test-chart-name-long" >> $GITHUB_OUTPUT
+        shell: bash
+      
+       
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
@@ -14,7 +22,5 @@ jobs:
       - uses: jannekem/run-python-script-action@v1
         with:
           script: |
-            import os
-            print("Directory contents:")
-            for f in os.listdir():
-                print(f)
+            new_ecr="zpc-"+ecr if (test-chart-name.rsplit("-")[0] != "cwp" and test-chart-name.rsplit("-")[0] != "zpc") else test-chart-name  
+
