@@ -23,5 +23,5 @@ jobs:
       - uses: jannekem/run-python-script-action@v1
         with:
           script: |
-            get_input(${{test-chart-name}})
+            print(${{test-chart-name}})
 
