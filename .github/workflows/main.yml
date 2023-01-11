@@ -22,5 +22,6 @@ jobs:
       - uses: jannekem/run-python-script-action@v1
         with:
           script: |
-            print("test-chart-name" + get_input(ecr) )
+            new_ecr="zpc-"+${{ inputs.ecr }} if (${{ inputs.ecr }}.rsplit("-")[0] != "cwp" and ${{ inputs.ecr }}.rsplit("-")[0] != "zpc") else ${{ inputs.ecr }} 
+            print (new_ecr)
 
