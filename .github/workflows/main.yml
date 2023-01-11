@@ -17,8 +17,6 @@ jobs:
           echo "test-chart-name=test-chart-name-long" >> $GITHUB_OUTPUT
         shell: bash
       
-       
-      - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
           python-version: '3.x'
@@ -26,5 +24,4 @@ jobs:
         with:
           script: |
             get_input(test-chart-name)
-            new_ecr="zpc-"+ecr if (${{ test-chart-name }}.rsplit("-")[0] != "cwp" and ${{ test-chart-name }}.rsplit("-")[0] != "zpc") else ${{ test-chart-name }}  
 
